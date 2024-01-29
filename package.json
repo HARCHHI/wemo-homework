@@ -1,0 +1,22 @@
+{
+  "name": "wemo-homework",
+  "version": "1.0.0",
+  "description": "A simple scooter rental API.",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HARCHHI/wemo-homework.git"
+  },
+  "keywords": [
+    "NestJS"
+  ],
+  "author": "HARCHHI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HARCHHI/wemo-homework/issues"
+  },
+  "homepage": "https://github.com/HARCHHI/wemo-homework#readme"
+}
