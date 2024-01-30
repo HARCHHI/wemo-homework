@@ -54,7 +54,7 @@ describe('UsersService', () => {
     const input = { name: 'test' };
     const res = await service.update(id, input);
 
-    expect(mockRepo.update).toHaveBeenCalledWith(id, input);
+    expect(mockRepo.update).toHaveBeenCalledWith(id, { id, ...input });
     expect(res).toEqual({ id, ...input });
   });
 });

@@ -36,7 +36,7 @@ export class UsersService {
     user.age = data.age;
     user.name = data.name;
     user.isActive = data.isActive;
-    await this.usersRepo.update(id, data);
+    await this.usersRepo.update(id, user);
 
     return user;
   }
