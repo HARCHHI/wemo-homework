@@ -29,22 +29,22 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "no-shadow": 0,
+    "no-shadow": "off",
     "@typescript-eslint/no-shadow": "warn",
-    "import/extensions": 0,
-    "max-classes-per-file": 0,
-    "class-methods-use-this": 0,
-    "no-param-reassign": 0,
-    "no-underscore-dangle": 0,
-    "no-empty-function": 0,
-    "@typescript-eslint/no-non-null-assertion": 0,
-    "no-bitwise": 0,
-    "no-useless-constructor": 0,
+    "import/extensions": "off",
+    "max-classes-per-file": "off",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-bitwise": "off",
+    "no-useless-constructor": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "import/prefer-default-export": 0,
-    "consistent-return": 0
+    "import/prefer-default-export": "off",
+    "consistent-return": "off"
   }
 }
