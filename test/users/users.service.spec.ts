@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { UsersService } from '../src/users/users.service';
-import { User } from '../src/entities/user.entity';
+import { UsersService } from '../../src/users/users.service';
+import { User } from '../../src/entities/user.entity';
 
 describe('UsersService', () => {
   const mockUser = { id: 1, name: 'mock user', age: 20 };

@@ -14,6 +14,10 @@ describe('RedisModule', () => {
     redisModule = RedisModule.forRoot(redisOption);
   });
 
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should return a DynamicModule', () => {
     expect(redisModule.global).toBeBoolean();
     expect(redisModule.providers).toHaveLength(2);
@@ -21,7 +25,7 @@ describe('RedisModule', () => {
     expect(redisModule.module).toEqual(RedisModule);
   });
 
-  it('should wrap options to a ValueProvider', () => {
+  it('should wrap options into a ValueProvider', () => {
     const [redisOptionProvider] = redisModule.providers;
     const { provide, useValue } = redisOptionProvider as ValueProvider;
 

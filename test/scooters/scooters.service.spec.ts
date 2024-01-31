@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { ScootersService } from '../src/scooters/scooters.service';
-import { Scooter } from '../src/entities/scooter.entity';
+import { ScootersService } from '../../src/scooters/scooters.service';
+import { Scooter } from '../../src/entities/scooter.entity';
 
 describe('ScooterService', () => {
   const mockScooter = { id: 1, plate: 'TT-0001', typeId: 1 };
