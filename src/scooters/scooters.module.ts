@@ -9,5 +9,6 @@ import { ScootersService } from './scooters.service';
   imports: [TypeOrmModule.forFeature([Scooter, ScooterType])],
   controllers: [ScootersController],
   providers: [ScootersService],
+  exports: [ScootersService],
 })
 export class ScootersModule {}

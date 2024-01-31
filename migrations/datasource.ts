@@ -1,7 +1,5 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
-
-import '../global';
 import 'dotenv/config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { User } from '../src/entities/user.entity';
@@ -11,9 +9,9 @@ import { ScooterType } from '../src/entities/scooterType.entity';
 import { Migrations1706534204356 } from './1706534204356-migrations';
 
 const options: DataSourceOptions = {
-  type: process.env.DB_TYPE,
+  type: process.env.DB_TYPE as 'postgres',
   host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
+  port: parseInt(process.env.DB_PORT!, 10),
   database: process.env.DB_DATABASE,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
