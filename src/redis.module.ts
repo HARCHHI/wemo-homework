@@ -3,7 +3,6 @@ import {
   DynamicModule,
   FactoryProvider,
   ValueProvider,
-  OnApplicationShutdown,
 } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 import Redis, { RedisOptions } from 'ioredis';
@@ -18,22 +17,25 @@ const createRedisOptionsProvider = (
   useValue: options,
 });
 
-const redisClientProvider: FactoryProvider<Redis> = {
-  provide: REDIS_CLIENT_TOKEN,
-  useFactory: (options: RedisOptions): Redis => {
-    const client = new Redis(options);
+const createRedisClientProvider = (
+  options: RedisOptions,
+): FactoryProvider<Redis> => {
+  const client = new Redis(options);
 
-    return client;
-  },
-  inject: [REDIS_OPTIONS_TOKEN],
+  return {
+    provide: REDIS_CLIENT_TOKEN,
+    useFactory: (): Redis => client,
+  };
 };
 
 @Module({})
-export class RedisModule implements OnApplicationShutdown {
+export class RedisModule {
   constructor(private moduleRef: ModuleRef) {}
 
   static forRoot(options: RedisOptions, isGlobal = true): DynamicModule {
     const redisOptionsProvider = createRedisOptionsProvider(options);
+    const redisClientProvider = createRedisClientProvider(options);
+
     return {
       global: isGlobal,
       module: RedisModule,
@@ -41,6 +43,4 @@ export class RedisModule implements OnApplicationShutdown {
       exports: [redisOptionsProvider, redisClientProvider],
     };
   }
-
-  onApplicationShutdown() {}
 }
