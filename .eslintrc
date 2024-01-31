@@ -29,15 +29,10 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": "warn",
     "import/extensions": "off",
     "max-classes-per-file": "off",
     "class-methods-use-this": "off",
-    "no-param-reassign": "off",
-    "no-underscore-dangle": "off",
     "no-empty-function": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
     "no-bitwise": "off",
     "no-useless-constructor": "off",
     "@typescript-eslint/interface-name-prefix": "off",
