@@ -9,12 +9,12 @@ import { ScooterType } from '../src/entities/scooterType.entity';
 import { Migrations1706534204356 } from './1706534204356-migrations';
 
 const options: DataSourceOptions = {
-  type: process.env.DB_TYPE as 'postgres',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT!, 10),
-  database: process.env.DB_DATABASE,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
+  type: 'postgres',
+  host: process.env.POSTGRES_HOST,
+  port: parseInt(process.env.POSTGRES_PORT!, 10),
+  database: process.env.POSTGRES_DATABASE,
+  username: process.env.POSTGRES_USERNAME,
+  password: process.env.POSTGRES_PASSWORD,
   entities: [User, ScooterType, Scooter, Rent],
   migrations: [Migrations1706534204356],
   synchronize: true,
