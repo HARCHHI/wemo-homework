@@ -16,6 +16,7 @@ export class UsersService {
 
     user.age = data.age;
     user.name = data.name;
+
     await this.usersRepo.insert(user);
 
     return user;

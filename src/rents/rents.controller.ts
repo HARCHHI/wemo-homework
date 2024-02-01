@@ -24,8 +24,8 @@ export class RentsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Rent> {
-    return this.rentService.findOne(id);
+  findOne(@Param('id') id: string): Promise<Rent> {
+    return this.rentService.findOne(parseInt(id, 10));
   }
 
   @Post()
@@ -36,7 +36,7 @@ export class RentsController {
 
   @Put(':id')
   @UseFilters(new RentsExceptionFilter())
-  return(@Param('id') id: number, @Body() { userId, token }: ReturnScooterDto) {
-    return this.rentService.return(id, userId, token);
+  return(@Param('id') id: string, @Body() { userId, token }: ReturnScooterDto) {
+    return this.rentService.return(parseInt(id, 10), userId, token);
   }
 }

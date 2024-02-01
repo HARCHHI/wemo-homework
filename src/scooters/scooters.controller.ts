@@ -28,20 +28,20 @@ export class ScootersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Scooter> {
-    return this.scootersService.findOne(id);
+  findOne(@Param('id') id: string): Promise<Scooter> {
+    return this.scootersService.findOne(parseInt(id, 10));
   }
 
   @Put(':id')
   update(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Body() data: UpdateScooterDto,
   ): Promise<Scooter> {
-    return this.scootersService.update(id, data);
+    return this.scootersService.update(parseInt(id, 10), data);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
-    return this.scootersService.delete(id);
+  delete(@Param('id') id: string) {
+    return this.scootersService.delete(parseInt(id, 10));
   }
 }

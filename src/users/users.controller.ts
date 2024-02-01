@@ -23,13 +23,13 @@ export class UsersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<User> {
-    return this.usersService.findOne(id);
+  findOne(@Param('id') id: string): Promise<User> {
+    return this.usersService.findOne(parseInt(id, 10));
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() data: UpdateUserDto): Promise<User> {
-    return this.usersService.update(id, data);
+  update(@Param('id') id: string, @Body() data: UpdateUserDto): Promise<User> {
+    return this.usersService.update(parseInt(id, 10), data);
   }
 
   @Post()
@@ -38,7 +38,7 @@ export class UsersController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number): Promise<void> {
-    return this.usersService.delete(id);
+  delete(@Param('id') id: string): Promise<void> {
+    return this.usersService.delete(parseInt(id, 10));
   }
 }

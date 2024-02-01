@@ -29,6 +29,7 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "no-param-reassign": "off",
     "import/extensions": "off",
     "max-classes-per-file": "off",
     "class-methods-use-this": "off",
