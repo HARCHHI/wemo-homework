@@ -5,6 +5,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
+import { ApiHideProperty } from '@nestjs/swagger';
 import { User } from './user.entity';
 import { Scooter } from './scooter.entity';
 
@@ -21,10 +22,12 @@ export class Rent {
 
   @ManyToOne(() => User)
   @JoinColumn({ name: 'userId' })
+  @ApiHideProperty()
   user: User;
 
   @ManyToOne(() => Scooter)
   @JoinColumn({ name: 'scooterId' })
+  @ApiHideProperty()
   scooter: Scooter;
 
   @Column()

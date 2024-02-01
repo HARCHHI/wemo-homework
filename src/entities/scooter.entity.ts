@@ -5,6 +5,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
+import { ApiHideProperty } from '@nestjs/swagger';
 import { ScooterType } from './scooterType.entity';
 
 @Entity()
@@ -17,6 +18,7 @@ export class Scooter {
 
   @ManyToOne(() => ScooterType)
   @JoinColumn({ name: 'typeId' })
+  @ApiHideProperty()
   type: ScooterType;
 
   @Column()

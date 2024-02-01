@@ -7,10 +7,12 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ScootersService } from './scooters.service';
 import { CreateScooterDto, UpdateScooterDto } from './dto/scooter.dto';
 import { Scooter } from '../entities/scooter.entity';
 
+@ApiTags('scooters')
 @Controller('scooters')
 export class ScootersController {
   constructor(private readonly scootersService: ScootersService) {}

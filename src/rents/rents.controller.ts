@@ -7,11 +7,13 @@ import {
   Put,
   UseFilters,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { RentsService } from './rents.service';
 import { CreateRentDto, ReturnScooterDto } from './dto/rent.dto';
 import { Rent } from '../entities/rent.entity';
 import { RentsExceptionFilter } from './rents-exception.filter';
 
+@ApiTags('rents')
 @Controller('rents')
 export class RentsController {
   constructor(private readonly rentService: RentsService) {}
