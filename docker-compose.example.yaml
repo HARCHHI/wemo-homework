@@ -1,0 +1,39 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:16.1-alpine
+    logging:
+      options:
+        max-size: 100k
+        max-file: 2
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=userpwd
+      - POSTGRES_DB=dbname
+    ports:
+      - 5432:5432
+  redis:
+    image: redis:7.2.3-alpine3.19
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: '200k'
+        max-file: '10'
+    ports:
+      - 6379:6379
+  homework:
+    image: wemo-homework:1.0.0
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DATABASE=dbname
+      - POSTGRES_USERNAME=user
+      - POSTGRES_PASSWORD=userpwd
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - redis
