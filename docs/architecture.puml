@@ -1,0 +1,18 @@
+@startuml "WEMO-Homework architecture"
+
+title "System Architecture"
+
+package Homework {
+  component ScootersModule
+  component UsersModule
+  component RentsModule
+  component RedisModule
+}
+
+
+database database
+database redis
+
+Homework -- database
+RedisModule -- redis
+@enduml

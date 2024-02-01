@@ -1,0 +1,37 @@
+@startuml rent-scooter-seq
+  title "Rent scooter sequence diagram"
+  Actor user
+  participant "WEMO-Homework" as wemo
+  participant redis
+  participant database
+
+  user -> wemo: POST: /rents
+  wemo -> redis: 將user設定為租借中 - hset(Key: LimitedUsers, UserId)
+
+  alt 尚可租借
+    redis --> wemo: 可以租借 - new hash field created
+    wemo -> redis: 登記租借車輛 - zadd(Key: ScooterId, member: UserId, score: timestamp)
+    redis --> wemo
+    wemo -> redis: 查詢租借結果 - zrange(Key: ScooterId, limit: 1)
+
+    alt 無人租借
+      redis --> wemo: 租借成功 - return member: user's userId
+      wemo -> database: 落地租借資訊
+      database --> wemo
+      wemo --> user: 租借成功
+    else 已在租借中
+      redis --> wemo: 租借失敗 - return member: incorrect userId
+
+      wemo -> redis: 取消租借狀態 - hdel(key: LimitedUsers, UserId)
+      wemo -> redis: 移除車輛的租借登記 - zrem(key: ScooterId, member: UserId)()
+      redis --> wemo
+      redis --> wemo
+
+      wemo --> user: 租借失敗
+    end
+
+  else 已有車輛租借中
+    redis --> wemo: 租借失敗 - hash field exists
+    wemo --> user: 租借失敗
+  end
+@enduml

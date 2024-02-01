@@ -1,0 +1,26 @@
+@startuml return-scooter-seq
+  title "return scooter sequence diagram"
+  Actor user
+  participant "WEMO-Homework" as wemo
+  participant redis
+  participant database
+
+  user -> wemo: PUT: /rents/租借單號
+  wemo -> database: 確認單號是否存在
+
+  alt 存在
+    database --> wemo: 租借資料
+    wemo -> wemo: 檢查歸還資料/token
+    alt 正常
+      wemo -> database: 記錄歸還時間
+      database --> wemo
+      wemo -> redis: 解除所有租借狀態
+      wemo --> user: 歸還成功
+    else 異常
+      wemo --> user: 歸還失敗
+    end
+  else 不存在
+    database --> wemo: null
+    wemo --> user: 歸還失敗
+  end
+@enduml
